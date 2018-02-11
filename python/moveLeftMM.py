@@ -11,7 +11,7 @@ if len(argv) < 3:
     exit (1)
 
 if (argv[1] == "raspi"):
-	base_url = 'http://192.168.1.104:8080/cableBot/'
+	base_url = 'http://192.168.1.114:8080/cableBot/'
 else:
 	base_url = 'http://localhost:8080/'
 

@@ -6,8 +6,8 @@ import json
 import random
 from sys import argv
 
-if len(argv) < 4:
-    print "\nUsage: "+argv[0] + " (raspi or local) (length) (stepPause)"
+if len(argv) < 5:
+    print "\nUsage: "+argv[0] + " (raspi or local) (x) (y) (stepPause)"
     exit (1)
 
 if (argv[1] == "raspi"):
@@ -15,13 +15,15 @@ if (argv[1] == "raspi"):
 else:
 	base_url = 'http://localhost:8080/'
 
-length = argv[2]
-stepPause = argv[3]
+x = argv[2]
+y = argv[3]
+stepPause = argv[4]
 
 headers = {'Content-Type': 'application/json'}
+Url=base_url+'moveMM/'+str(x)+'/'+str(y)+'/0/'+str(stepPause)
+print "Url is "+Url
 
-#response = requests.post(base_url+'moveMM/'+str(length)+'/0/0', headers=headers)
-response = requests.post(base_url+'moveMM/'+str(length)+'/0/0/'+str(stepPause), headers=headers)
+response = requests.post(Url, headers=headers)
 
 # switch motors off:
 response = requests.delete(base_url+'end')
